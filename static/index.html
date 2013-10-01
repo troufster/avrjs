@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title></title>
+    <script src="components/angular/angular.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="AvrCtrl" style="width:900px;">
+
+    <table style="float:left;width:150px">
+        <tr>
+           <th>reg</th>
+           <th>val</th>
+        </tr>
+        <tr ng-repeat="reg in regs">
+            <th>{{reg.id}}</th>
+            <th>{{reg.val}}</th>
+        </tr>
+    </table>
+
+
+    <table style="float:left;width:150px">
+        <tr>
+            <th>addr</th>
+            <th>val</th>
+        </tr>
+        <tr ng-repeat="adr in iomem">
+            <th>{{adr.id}}</th>
+            <th>{{adr.val}}</th>
+        </tr>
+    </table>
+
+    <div style="float:left;width:150px">
+        <div ng-repeat="l in log">
+            {{l}}
+        </div>
+    </div>
+
+<div id="control" style="float:left;width:350px">
+    <div>
+        SREG : <span ng-repeat="(name, val) in avr.sreg.dump()">{{ name }}:{{ val }} </span>
+    </div>
+    <div>
+        PC : {{avr.PC}}
+    </div>
+    <div>
+        SP : {{avr.SP}}
+    </div>
+    <div>
+        STEP : {{STEP}}
+    </div>
+    <div>
+        CYCLES : {{avr.CYCLES}}
+    </div>
+    <button ng-click="step()">Step</button>
+    <button ng-click="run()">Run</button>
+    <button ng-click="reset()">Reset</button>
+
+    <div>
+        Mem lookup: <input type="text" ng-keyup="searchMem()" ng-model="memq"/>
+        <div> {{ memlook }}</div>
+    </div>
+    <div>
+        Run interval: <input type="text" ng-model="runto"/>
+    </div>
+</div>
+</body>
+</html>
