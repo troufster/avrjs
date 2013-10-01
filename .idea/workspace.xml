@@ -6,7 +6,7 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/avr.js" changelist="cd17e5c0-a54f-46d7-bf85-c860811621c2" time="1380607875239" ignored="false" />
     <file path="/fragment.js" changelist="cd17e5c0-a54f-46d7-bf85-c860811621c2" time="1380535737881" ignored="false" />
-    <file path="/index.html" changelist="cd17e5c0-a54f-46d7-bf85-c860811621c2" time="1380572057956" ignored="false" />
+    <file path="/index.html" changelist="cd17e5c0-a54f-46d7-bf85-c860811621c2" time="1380622815387" ignored="false" />
     <file path="/app.js" changelist="cd17e5c0-a54f-46d7-bf85-c860811621c2" time="1380574366843" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,10 +27,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="avr.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="avr.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/avr.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="15" selection-start="573" selection-end="573" vertical-scroll-proportion="-0.75487465">
+            <state line="24" column="15" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="n#!!block;n#Sreg#0" expanded="false" />
@@ -41,10 +41,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="avr.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/avr.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="2" selection-start="377" selection-end="377" vertical-scroll-proportion="0.7009346">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="0" selection-start="1317" selection-end="1317" vertical-scroll-proportion="-18.333334">
+            <state line="5" column="34" selection-start="149" selection-end="149" vertical-scroll-proportion="-3.125">
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -59,12 +70,8 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="15" selection-end="170" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!block;n#Sreg#0" expanded="false" />
-                <element signature="n#!!block;n#Processor#0" expanded="false" />
-                <element signature="e#2109#30975#0" expanded="false" />
-              </folding>
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -128,11 +135,12 @@
         <option value="$PROJECT_DIR$/noblink.hex" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/blinkp.hex" />
-        <option value="$PROJECT_DIR$/static/index.html" />
         <option value="$PROJECT_DIR$/asmblink.txt" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/static/app.js" />
         <option value="$PROJECT_DIR$/avr.js" />
+        <option value="$PROJECT_DIR$/static/index.html" />
+        <option value="$PROJECT_DIR$/static/app.js" />
+        <option value="$PROJECT_DIR$/static/avr.js" />
       </list>
     </option>
   </component>
@@ -183,6 +191,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="avrjs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="avrjs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="avrjs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -269,8 +291,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973656" sideWeight="0.4976744" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19688645" sideWeight="0.645" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19688645" sideWeight="0.6438127" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35618728" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -387,19 +409,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="0" selection-start="1317" selection-end="1317" vertical-scroll-proportion="-18.333334">
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/asmblink.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="43" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0">
@@ -414,25 +423,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/app.js">
+    <entry file="file://$PROJECT_DIR$/static/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="15" selection-end="170" vertical-scroll-proportion="0.0">
+        <state line="5" column="34" selection-start="149" selection-end="149" vertical-scroll-proportion="-3.125">
           <folding>
-            <element signature="n#!!block;n#Sreg#0" expanded="false" />
-            <element signature="n#!!block;n#Processor#0" expanded="false" />
-            <element signature="e#2109#30975#0" expanded="false" />
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/avr.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="15" selection-start="573" selection-end="573" vertical-scroll-proportion="-0.75487465">
+        <state line="24" column="15" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="n#!!block;n#Sreg#0" expanded="false" />
             <element signature="n#!!block;n#Processor#0" expanded="false" />
             <element signature="e#1895#30761#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/avr.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="2" selection-start="377" selection-end="377" vertical-scroll-proportion="0.7009346">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
