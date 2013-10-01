@@ -10,6 +10,8 @@ function AvrCtrl($scope, $http) {
 
   $scope.memq = -1;
 
+
+
   $scope.searchMem = function() {
     $scope.memlook = p.memData[parseInt($scope.memq)];
   };
@@ -39,6 +41,13 @@ function AvrCtrl($scope, $http) {
     $scope.regs = [];
     $scope.iomem = [];
 
+
+    var x = (p.memData[RX_H] << 8) | p.memData[RX_L];
+    var y = (p.memData[RY_H] << 8) | p.memData[RY_L];
+    var z = (p.memData[RZ_H] << 8) | p.memData[RZ_L];
+    $scope.X = "0x"+x.toString(16) + " : 0x" + p.memData[x].toString(16);
+    $scope.Y = "0x"+y.toString(16) + " : 0x" + p.memData[y].toString(16);
+    $scope.Z = "0x"+z.toString(16) + " : 0x" + p.memData[z].toString(16);
 
     for(var i = 0; i < 32; i++) {
       $scope.regs.push({ id : i, val : p.memData[i].toString(16)});

@@ -818,9 +818,10 @@ Processor.prototype = {
                 break;
               case 0x940a: // DEC – Decrement
                 var r = (opcode >> 4) & 0x1f;
+
                 var res = memData[r] - 1;
 
-                if(debug) log("DEC r" + r);
+                if(debug) log("DEC r" + r , "was " + memData[r] + " is now " + res);
 
                 this.setReg(r, res);
 
