@@ -452,7 +452,20 @@ Processor.prototype = {
 
             break;
           case 0x2800: 	// OR Logical OR	0010 10rd dddd rrrr
-            this.notImplemented("OR");
+            //return [r, d, vd, vr];
+            var rd = this.getRd10(opcode, memData);
+            var r = rd[0];
+            var d = rd[1];
+            var vd = rd[2];
+            var vr = rd[3];
+
+            var res = vd | vr;
+            if(debug) log("OR r" + d + ", r" + r);
+            this.setReg(d, res);
+            sreg.Z = res == 0;
+            sreg.N = (res >> 7) & 1;
+            sreg.V = 0;
+            sreg.S = sreg.n() ^ sreg.v();
             break;
           case 0x2c00: 	// MOV	0010 11rd dddd rrrr
             //[r, d, vr];
@@ -682,7 +695,7 @@ Processor.prototype = {
 
                 if(debug) log("LPM r" + r + ", Z" + (op?"+":""));
 
-                this.setReg(r, memData[z]);
+                this.setReg(r, memProg[z]);
 
                 if(op == 1) {
                   z++;
@@ -706,7 +719,17 @@ Processor.prototype = {
               case 0x900c:
               case 0x900d:
               case 0x900e: 	// LD Load Indirect from Data using X 1001 000r rrrr 11oo
-                this.notImplemented("LD x");
+                var op = opcode & 3;
+                var r = (opcode >> 4) & 0x1f;
+                var x = (memData[RX_H] << 8) | memData[RX_L];
+                if (debug) log("LD r" + r + " , " +(op == 2 ? "--" : "") + "X" + (op == 1 ? "++" : ""));
+                cycle++; // 2 cycles (1 for tinyavr, except with inc/dec 2)
+                if (op == 2) x--;
+                this.setReg(r, memData[x]);
+                if (op == 1) x++;
+                this.setReg(RX_H, x >> 8);
+                this.setReg(RX_L, x);
+
                 break;
               case 0x920c:
               case 0x920d:
@@ -869,7 +892,7 @@ Processor.prototype = {
                     var res = memData[io] & (1 << b);
                     if(debug) log("SBIS " + io + " will" + (res?"":" not") +" branch");
                     if (res) {
-                      if (this.is32bit(new_pc)) {
+                      if (this.is32bits(memProg,new_pc)) {
                         new_pc += 4; cycle += 2;
                       } else {
                         new_pc += 2; cycle++;

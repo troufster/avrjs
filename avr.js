@@ -66,6 +66,10 @@ function Sreg() {
     var name = this.nameFromBit(n);
     this[name] = v;
   };
+
+  this.setFromVal = function(v) {
+
+  }
 }
 
 function Processor() {
@@ -1019,7 +1023,7 @@ fs.readFile('asmblink.txt', function(err, file) {
 
   //console.if(debug) log(p.getProgMem().readFromPtr().toString(16));
   //ermah
-  for(var i = 0; i < 1000000; i++) {
+  for(var i = 0; i < 1000; i++) {
     p.run();
   }
 
