@@ -294,7 +294,7 @@ Processor.prototype = {
                     var d = ((opcode >> 4) & 0xf) << 1;
                     var r = ((opcode) & 0xf) << 1;
 
-                    if(debug) log("MOVW r" + d + ", r" + r);
+                    if(debug) log("MOVW r" + r + ", r" + d);
 
                     this.setReg(d, memData[r]);
                     this.setReg(d+1, memData[r+1]);
@@ -434,16 +434,22 @@ Processor.prototype = {
           case 0x2400: 	// EOR	0010 01rd dddd rrrr
 
             //[r, d, vd, vr];
-            var d = this.getRd10(opcode, memData);
-            var res = d[2] ^ d[3];
+            var rd = this.getRd10(opcode, memData);
+            var r = rd[0];
+            var d = rd[1];
+            var vd = rd[2];
+            var vr = rd[3];
 
-            if (d[0]==d[1]) {
-              if(debug) log("CLR(EOR) r" + d[1], memData[d[1]]);
+
+            var res = vd ^ vr;
+
+            if (r==d) {
+              if(debug) log("CLR(EOR) r" + d, memData[d]);
             } else {
-              if(debug) log("EOR r" + d[1] + ", " + d[0]);
+              if(debug) log("EOR r" + d + ", " + r);
             }
 
-            this.setReg(d[1], res);
+            this.setReg(d, res);
 
             sreg.Z = res == 0;
             sreg.N = (res >> 7) & 1;
@@ -581,7 +587,7 @@ Processor.prototype = {
               memData[v+q] = memData[r];
             } else {
               if(debug) log("LD r"+ r +", Z", v+q);
-              memData[r] = memData[v+q];
+              this.setReg(r, memData[v+q]);
             }
             cycle += 1; // 2 cycles, 3 for tinyavr
             break;
@@ -693,8 +699,9 @@ Processor.prototype = {
                 var r = (opcode >> 4) & 0x1f;
                 var op = opcode & 3;
 
-                if(debug) log("LPM r" + r + ", Z" + (op?"+":""));
+                if(debug) log("LPM r" + r + ", Z" + (op?"+":""), " prog: 0x"+z.toString(16));
 
+                if(debug) log(memProg[z]);
                 this.setReg(r, memProg[z]);
 
                 if(op == 1) {
@@ -834,7 +841,7 @@ Processor.prototype = {
               case 0x940d: 	// JMP Long Call to sub, 32 bits
 
                 var a = ((opcode & 0x01f0) >> 3) | (opcode & 1);
-                var x = (memProg[new_pc+1] <<8) | memProg[new_pc];
+                var x = (memProg[new_pc+1] << 8) | memProg[new_pc];
 
                 a = (a << 16) | x;
 
@@ -1029,4 +1036,11 @@ Processor.prototype = {
     this.STEP++;
 
   }
+
+
+
 };
+
+if (typeof(module) !== 'undefined') {
+  module.exports = Processor;
+}

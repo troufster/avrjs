@@ -12,7 +12,7 @@ app.configure(function() {
 
 
 app.get('/avr', function(req,res){
-  fs.readFile('blinkp.hex', function(err, file) {
+  fs.readFile('asmblink.txt', function(err, file) {
     var hex = ihex.parse(file);
 
     res.send(hex);
