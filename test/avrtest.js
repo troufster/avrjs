@@ -90,6 +90,93 @@ describe('Basic functions', function(){
 
   });
 
+
+  it('shoud be able to set/read SREG liekbaus', function(done) {
+
+    p.sreg.C = 1;
+    p.sreg.Z = 0;
+    p.sreg.N = 0;
+    p.sreg.V = 0;
+    p.sreg.S = 0;
+    p.sreg.H = 0;
+    p.sreg.T = 0;
+    p.sreg.I = 0;
+
+    p.sreg.c().should.equal(1);
+
+    p.sreg.C = 0;
+    p.sreg.Z = 1;
+    p.sreg.N = 0;
+    p.sreg.V = 0;
+    p.sreg.S = 0;
+    p.sreg.H = 0;
+    p.sreg.T = 0;
+    p.sreg.I = 0;
+    p.sreg.z().should.equal(1);
+
+    p.sreg.C = 0;
+    p.sreg.Z = 0;
+    p.sreg.N = 1;
+    p.sreg.V = 0;
+    p.sreg.S = 0;
+    p.sreg.H = 0;
+    p.sreg.T = 0;
+    p.sreg.I = 0;
+    p.sreg.n().should.equal(1);
+
+    p.sreg.C = 0;
+    p.sreg.Z = 0;
+    p.sreg.N = 0;
+    p.sreg.V = 1;
+    p.sreg.S = 0;
+    p.sreg.H = 0;
+    p.sreg.T = 0;
+    p.sreg.I = 0;
+    p.sreg.v().should.equal(1);
+
+    p.sreg.C = 0;
+    p.sreg.Z = 0;
+    p.sreg.N = 0;
+    p.sreg.V = 0;
+    p.sreg.S = 1;
+    p.sreg.H = 0;
+    p.sreg.T = 0;
+    p.sreg.I = 0;
+    p.sreg.s().should.equal(1);
+
+    p.sreg.C = 0;
+    p.sreg.Z = 0;
+    p.sreg.N = 0;
+    p.sreg.V = 0;
+    p.sreg.S = 0;
+    p.sreg.H = 1;
+    p.sreg.T = 0;
+    p.sreg.I = 0;
+    p.sreg.h().should.equal(1);
+
+    p.sreg.C = 0;
+    p.sreg.Z = 0;
+    p.sreg.N = 0;
+    p.sreg.V = 0;
+    p.sreg.S = 0;
+    p.sreg.H = 0;
+    p.sreg.T = 1;
+    p.sreg.I = 0;
+    p.sreg.t().should.equal(1);
+
+    p.sreg.C = 0;
+    p.sreg.Z = 0;
+    p.sreg.N = 0;
+    p.sreg.V = 0;
+    p.sreg.S = 0;
+    p.sreg.H = 0;
+    p.sreg.T = 0;
+    p.sreg.I = 1;
+    p.sreg.i().should.equal(1);
+
+
+    done();
+  });
 });
 
 describe('Instructions', function() {
@@ -295,6 +382,53 @@ describe('Instructions', function() {
       done();
     });
   });
+  describe('cpc', function() {
+    //cpc r27, r17
+    var instruction = [ 0xb1, 0x07];
 
-  
+    it('should consider carry and keep Z', function(done) {
+      var p = getp();
+      loadsingleinstr(p, instruction);
+
+      p.sreg.C =1;
+      p.sreg.Z =1;
+      p.memData[27] = 0x0f;
+      p.memData[17] = 0x0e;
+
+      p.run();
+
+      p.sreg.z().should.equal(1);
+
+      done();
+    });
+  });
+  describe('lpm Rd, Z+', function() {
+    //lpm r0, Z+
+    var instruction = [0x05, 0x90];
+
+    it('should load Z pointer into Rd and increment Z', function(done){
+      var p = getp();
+
+      //Add something to load
+      instruction.push(0xfe);
+      instruction.push(0xff);
+
+      //Set Z to point at 0x2;
+      //register 30 is low byte of Z
+      p.memData[30] = 0x02;
+
+      loadsingleinstr(p, instruction);
+
+      p.run();
+
+      //progmem at 0x02
+      p.memData[0].should.equal(0xfe);
+
+      //has incremented?
+      p.memData[30].should.equal(0x02+1);
+
+      done();
+    });
+  });
+
 });

@@ -4,9 +4,16 @@
 
 var log = [];
 
+var logToConsole = 0;
+
 var Dbg = {
   log : function() {
     var args = [].slice.call(arguments);
+
+    if(logToConsole) {
+      console.log.apply(console,args);
+      return;
+    }
 
     log.unshift(args.join("\t"));
 
@@ -84,7 +91,7 @@ function Processor() {
    * 0x0100 - 0x02ff -> 512 bytes of internal SRAM
    */
 
-  this.memProg = new Uint16Array(0x800);
+  this.memProg = new Uint8Array(0x800);
   this.memData = new Uint8Array(0xffff);
   this.SP = 0xffff;
   this.PC = 0;
@@ -696,12 +703,16 @@ Processor.prototype = {
               case 0x9005:
               case 0x9004: 	// LPM Load Program Memory 1001 000d dddd 01oo
                 var z = memData[RZ_L] | (memData[RZ_H] << 8);
+
                 var r = (opcode >> 4) & 0x1f;
+
                 var op = opcode & 3;
+
 
                 if(debug) log("LPM r" + r + ", Z" + (op?"+":""), " prog: 0x"+z.toString(16));
 
                 if(debug) log(memProg[z]);
+
                 this.setReg(r, memProg[z]);
 
                 if(op == 1) {
